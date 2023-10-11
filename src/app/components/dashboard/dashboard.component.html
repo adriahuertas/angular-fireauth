@@ -12,9 +12,15 @@
     Log Out
   </button>
 
-  <div class="mt-10">
-    <p class="text-4xl text-blue-500 dark:text-blue-400">
-      Thank You for Using Our Dashboard
+  <div class="mt-10 text-center">
+    <p class="text-4xl text-blue-500 dark:text-blue-400 mb-5">
+      <span *ngIf="loggedUser.displayName">{{ loggedUser.displayName }}</span>
     </p>
+    <p class="text-4xl text-blue-500 dark:text-blue-400 mb-5">
+      <span *ngIf="loggedUser.email">{{ loggedUser.email }}</span>
+    </p>
+    <div *ngIf="loggedUser.photoURL" class="flex flex-col items-center">
+      <img src="{{ loggedUser.photoURL }}" alt="User Photo" />
+    </div>
   </div>
 </main>
