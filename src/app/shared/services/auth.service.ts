@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { GoogleAuthProvider } from '@angular/fire/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
@@ -53,6 +53,15 @@ export class AuthService {
   logInWithGoogle() {
     return this.firebaseAuthenticationService
       .signInWithPopup(new GoogleAuthProvider())
+      .then(() => this.observeUserState())
+      .catch((error: Error) => {
+        alert(error.message);
+      });
+  }
+
+  logInWithGithub() {
+    return this.firebaseAuthenticationService
+      .signInWithPopup(new GithubAuthProvider())
       .then(() => this.observeUserState())
       .catch((error: Error) => {
         alert(error.message);

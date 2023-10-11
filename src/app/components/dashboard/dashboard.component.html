@@ -20,7 +20,11 @@
       <span *ngIf="loggedUser.email">{{ loggedUser.email }}</span>
     </p>
     <div *ngIf="loggedUser.photoURL" class="flex flex-col items-center">
-      <img src="{{ loggedUser.photoURL }}" alt="User Photo" />
+      <img
+        src="{{ loggedUser.photoURL }}"
+        alt="User Photo"
+        class="rounded-full w-24 h-24"
+      />
     </div>
   </div>
 </main>
