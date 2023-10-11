@@ -38,6 +38,18 @@ export class AuthService {
       });
   }
 
+  signUpWithEmailAndPassword(email: string, password: string) {
+    return this.firebaseAuthenticationService
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        this.userData = userCredential.user;
+        this.observeUserState();
+      })
+      .catch((error: Error) => {
+        alert(error.message);
+      });
+  }
+
   logInWithGoogle() {
     return this.firebaseAuthenticationService
       .signInWithPopup(new GoogleAuthProvider())
