@@ -80,7 +80,7 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user !== null;
+    return user && user.displayName;
   }
 
   logOut() {
